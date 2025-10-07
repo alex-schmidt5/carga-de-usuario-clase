@@ -1,4 +1,3 @@
-// Definición de la clase Usuario
 class Usuario {
     constructor(id, nombre, apellido, telefono, email, activo) {
         this.id = id;
@@ -10,15 +9,12 @@ class Usuario {
     }
 }
 
-// Variables globales
 let usuarios = [];
 let id = 1;
 
-// Referencias del DOM
 const formulario = document.getElementById("formulario");
 const tabla = document.getElementById("tabla");
 
-// Evento de envío del formulario
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -29,19 +25,15 @@ formulario.addEventListener("submit", (e) => {
     const email = document.getElementById("email").value;
     const activo = document.getElementById("activo").checked;
 
-    // Crear nuevo usuario usando la clase
     const nuevoUsuario = new Usuario(id, nombre, apellido, telefono, email, activo);
     usuarios.push(nuevoUsuario);
     id++;
 
-    // Actualizar la tabla
     mostrarTabla();
 
-    // Limpiar el formulario
     formulario.reset();
 });
 
-// Función para renderizar la tabla
 function mostrarTabla() {
     tabla.innerHTML = "";
     usuarios.forEach((u) => {
