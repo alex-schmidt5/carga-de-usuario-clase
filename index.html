@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="estilos.css">
+    <title>Carga de Usuarios</title>
+</head>
+
+<body>
+<div class="container">
+    <form id="formulario">
+        <input id="nombre" placeholder="Nombre" required>
+        <input id="apellido" placeholder="Apellido" required>
+        <input id="telefono" placeholder="Teléfono" required>
+        <input id="email" type="email" placeholder="Email" required>
+        <label>
+            <input id="activo" type="checkbox"> Activo
+        </label>
+        <button type="submit">Guardar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Activo</th>
+            </tr>
+        </thead>
+        <tbody id="tabla"></tbody>
+    </table>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
