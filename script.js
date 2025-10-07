@@ -18,7 +18,6 @@ const tabla = document.getElementById("tabla");
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    // Obtener valores del formulario
     const nombre = document.getElementById("nombre").value;
     const apellido = document.getElementById("apellido").value;
     const telefono = document.getElementById("telefono").value;
