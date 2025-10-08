@@ -64,8 +64,6 @@ form button {
 form button:hover {
     transform: scale(1.05);
 }
-
-/* Tabla */
 table {
     width: 100%;
     border-collapse: collapse;

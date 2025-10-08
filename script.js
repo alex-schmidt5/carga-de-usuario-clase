@@ -1,42 +1,33 @@
-class Usuario {
-    constructor(id, nombre, apellido, telefono, email, activo) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.telefono = telefono;
-        this.email = email;
-        this.activo = activo;
-    }
-}
+import Usuario from './classes/Usuario.js';
 
-let usuarios = [];
-let id = 1;
-
-const formulario = document.getElementById("formulario");
+const form = document.getElementById("formulario");
 const tabla = document.getElementById("tabla");
 
-formulario.addEventListener("submit", (e) => {
+mostrarTabla();
+
+form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const nombre = document.getElementById("nombre").value;
-    const apellido = document.getElementById("apellido").value;
-    const telefono = document.getElementById("telefono").value;
-    const email = document.getElementById("email").value;
-    const activo = document.getElementById("activo").checked;
+    const nombre = form.nombre.value;
+    const apellido = form.apellido.value;
+    const telefono = form.telefono.value;
+    const email = form.email.value;
+    const activo = form.activo.checked;
 
-    const nuevoUsuario = new Usuario(id, nombre, apellido, telefono, email, activo);
-    usuarios.push(nuevoUsuario);
-    id++;
+    const id = Usuario.items.length + 1;
+    const nuevo = new Usuario(id, nombre, apellido, telefono, email, activo);
 
+    Usuario.items.push(nuevo);
+    localStorage.setItem("usuarios", JSON.stringify(Usuario.items));
+
+    form.reset();
     mostrarTabla();
-
-    formulario.reset();
 });
 
 function mostrarTabla() {
     tabla.innerHTML = "";
-    usuarios.forEach((u) => {
-        const fila = `
+    Usuario.items.forEach(u => {
+        tabla.innerHTML += `
             <tr>
                 <td>${u.id}</td>
                 <td>${u.nombre}</td>
@@ -44,7 +35,7 @@ function mostrarTabla() {
                 <td>${u.telefono}</td>
                 <td>${u.email}</td>
                 <td>${u.activo ? "Sí" : "No"}</td>
-            </tr>`;
-        tabla.innerHTML += fila;
+            </tr>
+        `;
     });
 }
